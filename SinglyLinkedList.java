@@ -15,5 +15,13 @@ public record SinglyLinkedList(ListNode root) {
             return String.valueOf(node.value());   
         return String.valueOf(node.value()) + ", " + toString(node.next());
     }
+    static SinglyLinkedList addLast(final SinglyLinkedList list, final int value) {
+       return new SinglyLinkedList(addLast(list.root(), value));
+
+    }
+    static ListNode addLast(final ListNode node, final int value){
+        if (node == null) return new ListNode(value, null);
+        return new ListNode(node.value(), addLast(node.next(), value));
+    }
     
 }
